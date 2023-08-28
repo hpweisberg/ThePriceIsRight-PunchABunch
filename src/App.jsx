@@ -88,6 +88,10 @@ function App() {
     setPunchCount(punchCount + 1)
   }
 
+  const handleUsePunch = () => {
+    setPunchCount(punchCount - 1)
+  }
+
 
   const getRandomItem = () => {
     const unusedItems = hiLoItems.filter(item => !usedItems[item.name]);
@@ -130,11 +134,11 @@ function App() {
         <h1 className="md:text-4xl text-2xl">PUNCH-A-BUNCH</h1>
       </div>
       <div className="flex justify-center items-center h-[80vh] md:h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
-        {startPunchABunch ?
-          <PunchABunchContainer punchCount={punchCount}/>
-          :
+        {/* {startPunchABunch ? */}
+          <PunchABunchContainer punchCount={punchCount} handleUsePunch={handleUsePunch}/>
+          {/* :
           <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} />
-        }
+        } */}
       </div>
     </main>
   )
