@@ -3,7 +3,7 @@ import HiLoGame from "./HiLoGame";
 
 
 
-const HiLoContainer = ({ punchCount, handleCorrectHiLoGuess, hiLoItemCount, handleNextHiLoItem, handleStartPunchABunch, getRandomItem, item, handleStartHiLoGame }) => {
+const HiLoContainer = ({ punchCount, handleCorrectHiLoGuess, hiLoItemCount, handleNextHiLoItem, handleStartPunchABunch, getRandomItem, item, handleStartHiLoGame, handleNewGame }) => {
 
   return (
     <section className="text-slate-200">
@@ -16,6 +16,7 @@ const HiLoContainer = ({ punchCount, handleCorrectHiLoGuess, hiLoItemCount, hand
         getRandomItem={getRandomItem}
         item={item}
         handleStartHiLoGame={handleStartHiLoGame}
+        handleNewGame={handleNewGame}
       />
     </section>
   );

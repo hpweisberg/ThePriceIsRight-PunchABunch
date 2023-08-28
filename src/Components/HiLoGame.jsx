@@ -9,15 +9,13 @@ const HiLoGame = ({
   handleCorrectHiLoGuess,
   hiLoItemCount,
   handleNextHiLoItem,
-  // setCurrentItemIndex,
   handleStartHiLoGame,
-  handleStartPunchABunch
+  handleStartPunchABunch,
+  handleNewGame
 }) => {
   const [showRealPrice, setShowRealPrice] = useState(false);
   const [message, setMessage] = useState(null)
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
-
-
 
   useEffect(() => {
     setShowRealPrice(false);
@@ -39,24 +37,35 @@ const HiLoGame = ({
     }
   };
 
-  //TODO this need to transfer to punch a bunch
   const handleContinue = () => {
     setShowRealPrice(false);
     setButtonsDisabled(false);
 
     if (hiLoItemCount < 4) {
       handleNextHiLoItem();
-    } else {
-      // setCurrentItemIndex(null); // No more items, stop displaying
     }
   };
+
+  const handleTryAgain = () => {
+    handleNewGame();
+    setButtonsDisabled(false);
+  }
 
   if (hiLoItemCount === 0) {
     return (
       <section>
-        <button onClick={handleStartHiLoGame} className="w-auto  p-4 bg-red-500 rounded-md shadow-md">Start Hi-Lo Game</button>
+        <button onClick={handleStartHiLoGame} className="w-auto p-4 bg-red-500 rounded-md shadow-md">Start Hi-Lo Game</button>
       </section>
     );
+  }
+
+  if ((hiLoItemCount === 4) && message && (punchCount === 0)) {
+    return (
+      <div className="flex flex-col justify-center items-center gap-4">
+        <h2 className="text-center text-lg">Better luck next time!</h2>
+        <button onClick={handleTryAgain} className="w-auto border-2 rounded-md shadow-md m-2 h-10  hover:bg-slate-800 hover:transition-colors">Play Again?</button>
+      </div>
+    )
   }
 
   return (
@@ -73,12 +82,6 @@ const HiLoGame = ({
 
         >{message}</p>
         <div className=" md:w-1/3">
-          {/* {(message && hiLoItemCount === 4) &&
-            <button onClick={handleStartPunchABunch} className="bg-green-500 shadow-md rounded-md h-10 w-full md:w-[200px] text-xs mt-2 md:mt-0"
-            >
-              Start Punch-A-Bunch
-            </button>
-          } */}
         </div>
       </div>
       <section className="flex md:flex-row flex-col gap-4">

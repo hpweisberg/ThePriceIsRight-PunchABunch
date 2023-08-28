@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import HiLoContainer from "./Components/HiLoContainer"
 
 import hydrationSystem from './assets/GamePieces/hydrationSystem.png';
@@ -70,12 +70,6 @@ function App() {
   const [item, setItem] = useState(null)
   const [usedItems, setUsedItems] = useState({});
 
-
-  console.log('punchCount: ', punchCount)
-  console.log('startPunchABunch: ', startPunchABunch)
-  console.log('hiLoItemCount: ', hiLoItemCount)
-  console.log('item: ', item)
-
   const handleStartPunchABunch = () => {
     if (startPunchABunch === false) {
       setStartPunchABunch(true)
@@ -121,12 +115,21 @@ function App() {
   }
 
   const handleStartHiLoGame = () => {
+    setStartPunchABunch(false)
+    setHiLoItemCount(0)
+    setItem(null)
     setUsedItems({})
     getRandomItem()
     setHiLoItemCount(hiLoItemCount + 1)
-    // console.log('hiLoItemCount: ', hiLoItemCount)
-    // console.log('item: ', item)
   }
+
+  const handleNewGame = () => {
+    setStartPunchABunch(false)
+    setHiLoItemCount(0)
+    setItem(null)
+    setUsedItems({})
+  }
+
 
   return (
     <main className="flex flex-col items-center justify-around h-screen">
@@ -134,11 +137,11 @@ function App() {
         <h1 className="md:text-4xl text-2xl">PUNCH-A-BUNCH</h1>
       </div>
       <div className="flex justify-center items-center h-[80vh] md:h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
-        {/* {startPunchABunch ? */}
-          <PunchABunchContainer punchCount={punchCount} handleUsePunch={handleUsePunch}/>
-          {/* :
-          <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} />
-        } */}
+        {startPunchABunch ?
+          <PunchABunchContainer punchCount={punchCount} handleUsePunch={handleUsePunch} handleNewGame={handleNewGame} />
+          :
+          <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} handleNewGame={handleNewGame} />
+        }
       </div>
     </main>
   )
