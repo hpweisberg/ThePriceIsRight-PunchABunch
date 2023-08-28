@@ -133,8 +133,19 @@ function App() {
 
   return (
     <main className="flex flex-col items-center justify-around h-screen">
-      <div className="h-[10vh] border-2 border-blue-400 flex justify-center items-center">
+      <div className="h-[10vh] flex flex-col justify-center items-center">
         <h1 className="md:text-4xl text-2xl">PUNCH-A-BUNCH</h1>
+        {
+          startPunchABunch === false &&
+          <h3 className="text-xs md:text-md text-slate-900/70 text-center md:px-0 px-2">Guess the actual retail price of the 4 items to earn punches</h3>
+        }
+        {punchCount > 0 && startPunchABunch &&
+          <h3 className="text-xs md:text-md text-slate-900/70 text-center md:px-0 px-2">Punch Count: {punchCount}</h3>
+        }
+        {
+          punchCount === 0 && startPunchABunch &&
+          <h3 className="text-xs md:text-md text-slate-900/70 text-center md:px-0 px-2">You can only keep 1 prize</h3>
+        }
       </div>
       <div className="flex justify-center items-center h-[80vh] md:h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
         {startPunchABunch ?
@@ -143,6 +154,40 @@ function App() {
           <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} handleNewGame={handleNewGame} />
         }
       </div>
+      {punchCount > 0 && startPunchABunch &&
+        <div className="flex flex-col md:w-3/5 justify-center items-center md:text-md text-xs md:gap-2">
+          <div className="flex gap-2">
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px] ">1</span>$25,000
+            </p>
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px] ">2</span>$10,000
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px]">4</span>$5,000
+            </p>
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px]">8</span>$2,500
+            </p>
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px]">10</span>$1,000
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px] ">10</span>$500
+            </p>
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px] ">10</span>$250
+            </p>
+            <p>
+              <span className="bg-red-400 rounded-full md:p-1 p-[3px] ">5</span>$100
+            </p>
+          </div>
+        </div>
+      }
     </main>
   )
 }

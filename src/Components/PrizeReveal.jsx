@@ -37,8 +37,11 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
     return (
       <div className=" w-full h-full flex flex-col justify-center items-center gap-4">
         <div className="border-2 border-black bg-green-500 rounded-md shadow-md w-4/5 h-2/3 flex flex-col justify-center items-center gap-8 p-4 md:p-8 ">
+          <h1 className="md:text-4xl text-xl text-center ">
+            YOU WON
+          </h1>
           <h1 className="md:text-6xl text-2xl text-center ">
-            You won ${currentPrize}!
+            ${currentPrize}!
           </h1>
         </div>
 
