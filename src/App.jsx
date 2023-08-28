@@ -129,9 +129,9 @@ function App() {
       <div className="h-[10vh] border-2 border-blue-400 flex justify-center items-center">
         <h1 className="md:text-4xl text-2xl">PUNCH-A-BUNCH</h1>
       </div>
-      <div className="flex justify-center items-center h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
+      <div className="flex justify-center items-center h-[80vh] md:h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
         {startPunchABunch ?
-          <PunchABunchContainer />
+          <PunchABunchContainer punchCount={punchCount}/>
           :
           <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} />
         }
