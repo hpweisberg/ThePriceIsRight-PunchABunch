@@ -13,15 +13,18 @@ const HiLoGame = ({
   handleStartPunchABunch,
   handleNewGame
 }) => {
+  //TODO Track state of RealPrice, message, and disable buttons.
   const [showRealPrice, setShowRealPrice] = useState(false);
   const [message, setMessage] = useState(null)
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
+  //TODO Hide the real price and message on new item.
   useEffect(() => {
     setShowRealPrice(false);
     setMessage(null);
   }, [item]);
 
+  //TODO Handle the user guess: show real price, disable buttons, & set message
   const handleGuess = (guess) => {
     setShowRealPrice(true);
     setButtonsDisabled(true);
@@ -37,6 +40,7 @@ const HiLoGame = ({
     }
   };
 
+  //TODO Handle the user clicking continue to the next item
   const handleContinue = () => {
     setShowRealPrice(false);
     setButtonsDisabled(false);
@@ -46,11 +50,13 @@ const HiLoGame = ({
     }
   };
 
+  //TODO Handle the user guessing wrong on all 4 items
   const handleTryAgain = () => {
     handleNewGame();
     setButtonsDisabled(false);
   }
 
+  //TODO Handle the start game btn
   if (hiLoItemCount === 0) {
     return (
       <section>
@@ -59,30 +65,29 @@ const HiLoGame = ({
     );
   }
 
+  //TODO Display the end game screen if user lost
   if ((hiLoItemCount === 4) && message && (punchCount === 0)) {
     return (
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-center text-lg">Better luck next time!</h2>
-        <button onClick={handleTryAgain} className="w-auto border-2 rounded-md shadow-md m-2 h-10  hover:bg-slate-800 hover:transition-colors">Play Again?</button>
+        <button onClick={handleTryAgain} className="w-auto border-2 rounded-md shadow-md m-2 h-10 hover:bg-slate-800 hover:transition-colors">Play Again?</button>
       </div>
     )
   }
 
   return (
-    <main className="flex flex-col justify-center md:gap-4 gap-2">
-      <div className="flex flex-col md:flex-row md:justify-between md:gap-20 md:text-md text-sm items-center">
-        <h3 className="w-full md:w-1/3 text-center text-lg">Punch Count: {punchCount}</h3>
-        <p className={`w-full md:w-1/3 h-6 md:h-10  text-center text-4xl alig-center text-slate-800 
+    <main className="flex flex-col justify-center gap-1 md:gap-4 text-slate-200 items-center">
+      <div className="flex flex-col md:flex-row md:justify-center md:gap-10 text-sm md:text-md items-center">
+        <p className={`w-full  h-6 md:h-10 text-center text-4xl alig-center text-slate-800 
         ${message === "Correct!"
-            ? "text-green-300 mb-2"
+            ? "text-green-500 mb-2"
             : message === "Incorrect!"
-              ? "text-red-300 mb-2"
+              ? "text-red-500 mb-2"
               : ""
           }`}
-
-        >{message}</p>
-        <div className=" md:w-1/3">
-        </div>
+        >
+          {message}
+        </p>
       </div>
       <section className="flex md:flex-row flex-col gap-4">
         <div className="flex items-center text-center flex-col text-slate-200 w-[300px] h-[250px] md:h-auto md:w-[400px]">
@@ -95,8 +100,8 @@ const HiLoGame = ({
             <p className="text-4xl">${item?.fakePrice}</p>
             :
             <div className="flex flex-col items-center">
-              <p className={`text-4xl ${message === 'Correct!' ? 'line-through decoration-green-500 mb-2' : 'line-through decoration-red-500 mb-2'}`}>{item?.fakePrice}</p>
-              <p className="text-sm">Actual Retail Price:</p>
+              <p className={`text-2xl ${message === 'Correct!' ? 'line-through decoration-green-500 mb-2' : 'line-through decoration-red-500 mb-2'}`}>{item?.fakePrice}</p>
+              <p className="text-xs">Actual Retail Price:</p>
               <p className="text-4xl">${item?.realPrice}</p>
             </div>
           }
@@ -124,13 +129,14 @@ const HiLoGame = ({
           ) : (
             <button
               onClick={hiLoItemCount === 4 && message ? handleStartPunchABunch : handleContinue}
-              className="w-20 border-2 rounded-md shadow-md m-2 h-10 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors"
+              className="w-20 border-2 rounded-md shadow-md m-1 h-10 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors"
             >
               Continue
             </button>
           )}
         </div>
       </section>
+      
     </main>
   );
 };

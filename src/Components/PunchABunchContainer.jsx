@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import PrizeReveal from "./PrizeReveal";
 
+//! List of all prizes
 const prizes = [
   { value: '100', count: 5 },
   { value: '250', count: 10 },
@@ -15,11 +16,11 @@ const prizes = [
 ]
 
 const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => {
+  //TODO Track state of selected circles and remaining prizes
   const [selectedCircles, setSelectedCircles] = useState([]);
   const [remainingPrizes, setRemainingPrizes] = useState([]);
-  console.log('selectedCircles: ', selectedCircles)
-  console.log('remainingPrizes: ', remainingPrizes)
 
+  //TODO Shuffel the prizes
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -28,6 +29,7 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
     return array;
   }
 
+  //TODO Handle the new game
   useEffect(() => {
     const initialRemainingPrizes = [];
     prizes.forEach((prize) => {
@@ -39,6 +41,7 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
     setRemainingPrizes(initialRemainingPrizes);
   }, []);
 
+  //TODO Handle the circle click
   const handleCircleClick = (index) => {
     if (punchCount > 0 && !selectedCircles.some((circle) => circle.index === index)) {
       setSelectedCircles([...selectedCircles, { index, value: remainingPrizes[index] }]);
@@ -46,7 +49,7 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
     }
   };
 
-
+  //TODO Handle the game over if no items were guessed correctly
   if (punchCount === 0) {
     return (
       <PrizeReveal
@@ -57,10 +60,8 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
   }
 
 
-
   return (
-    <section>
-      <div className="w-full h-full flex justify-center items-center p-2">
+    <section className="w-full h-full flex justify-center items-center p-2">
         <div className="grid grid-cols-5 gap-1 md:grid-cols-10 md:grid-rows-5"
           style={{
             cursor: `url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='42' height='42' style='font-size: 40px'><text y='40'>👊</text></svg>"), auto`
@@ -68,7 +69,7 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
           {Array.from({ length: 5 * 10 }).map((_, index) => (
             <div
               key={index}
-              className={`w-8 h-8 md:w-14 md:h-14 m-1 flex items-center justify-center rounded-full text-center text-xl md:text-3xl font-bold text-yellow-400 ${selectedCircles.some((circle) => circle.index === index)
+              className={`w-8 h-8 md:w-12 md:h-12 md:mx-1 m-[2px] flex items-center justify-center rounded-full text-center text-xl md:text-3xl font-bold text-yellow-400 ${selectedCircles.some((circle) => circle.index === index)
                 ? 'bg-gradient-to-tr from-black to-gray-700'
                 : 'bg-yellow-200/30'
                 }`}
@@ -78,7 +79,6 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
             </div>
           ))}
         </div>
-      </div>
     </section>
 
   );

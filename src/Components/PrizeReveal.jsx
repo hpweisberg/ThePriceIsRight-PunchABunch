@@ -3,24 +3,27 @@ import { useEffect, useState } from "react";
 import ConfettiEffect from "./ConfettiEffect";
 
 const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
+  //TODO Track state of currentIndex and gameOver
   const [currentIndex, setCurrentIndex] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+
+  //TODO Get value of current prize
   const currentPrize = selectedCircles[currentIndex].value;
 
+  //TODO End game when user is happy with their prize
   const handleKeepPrize = () => {
     console.log(`You chose to keep the prize: ${currentPrize}`);
     setGameOver(true);
   };
 
+  //TODO Continue game when user wants to look at the next prize
   const handleContinue = () => {
-    console.log(`You chose to throw away the prize: ${currentPrize}`);
     if (currentIndex < selectedCircles.length - 1) {
       setCurrentIndex(currentIndex + 1);
-    }  if ((selectedCircles.length - currentIndex - 1) === 0) {
-      setGameOver(true);
     }
   };
 
+  //TODO Check if there are punches left to continue
   useEffect(() => {
     if ((selectedCircles.length - currentIndex - 1) === 0) {
       setGameOver(true);
@@ -28,12 +31,14 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   }, [selectedCircles, currentIndex])
 
 
+  //TODO Handle restarting the game
   const handleRestart = () => {
     setGameOver(false);
     setCurrentIndex(0);
     handleNewGame();
   }
 
+  //TODO Display end game card
   if (gameOver === true) {
     return (
       <div className=" w-full h-full flex flex-col justify-center items-center gap-4">
@@ -46,12 +51,10 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
             ${currentPrize}!
           </h1>
         </div>
-
         <div className=" flex w-4/5 justify-around">
           <button className="border-2 hover:border-black rounded-md shadow-md p-1 px-2 hover:bg-slate-800 bg-blue-500/50 hover:text-slate-300 transition-colors text-xs md:text-md"
             onClick={() => handleRestart()}>Play Again?</button>
         </div>
-
       </div>
     )
   }

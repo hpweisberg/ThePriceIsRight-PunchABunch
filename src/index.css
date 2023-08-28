@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  @apply md:bg-hero-pattern bg-cover bg-no-repeat bg-center h-screen w-screen flex flex-col justify-center items-center text-black font-sans text-2xl font-bold overscroll-none bg-hero-pattern-mobile
+  @apply md:bg-hero-pattern bg-cover bg-no-repeat bg-center h-screen w-screen flex flex-col justify-center items-center text-black font-sans text-2xl font-bold overscroll-none bg-hero-pattern-mobile bg-yellow-300
 }
 
 button {
