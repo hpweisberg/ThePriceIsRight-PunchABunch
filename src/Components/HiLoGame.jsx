@@ -107,14 +107,14 @@ const HiLoGame = ({
           {message === null && hiLoItemCount < 5 ? (
             <div className="flex md:flex-col">
               <button
-                className="w-20 border-2 rounded-md shadow-md m-2 hover:bg-slate-800 hover:transition-colors"
+                className="w-20 border-2 rounded-md shadow-md m-2 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors"
                 onClick={() => handleGuess('higher')}
                 disabled={buttonsDisabled}
               >
                 HIGHER
               </button>
               <button
-                className="w-20 border-2 rounded-md shadow-md m-2 hover:bg-slate-800 hover:transition-colors"
+                className="w-20 border-2 rounded-md shadow-md m-2 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors"
                 onClick={() => handleGuess('lower')}
                 disabled={buttonsDisabled}
               >
@@ -124,7 +124,7 @@ const HiLoGame = ({
           ) : (
             <button
               onClick={hiLoItemCount === 4 && message ? handleStartPunchABunch : handleContinue}
-              className="w-20 border-2 rounded-md shadow-md m-2 h-10  hover:bg-slate-800 hover:transition-colors"
+              className="w-20 border-2 rounded-md shadow-md m-2 h-10 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors"
             >
               Continue
             </button>

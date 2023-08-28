@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import ConfettiEffect from "./ConfettiEffect";
 
 const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,6 +37,7 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   if (gameOver === true) {
     return (
       <div className=" w-full h-full flex flex-col justify-center items-center gap-4">
+        <ConfettiEffect />
         <div className="border-2 border-black bg-green-500 rounded-md shadow-md w-4/5 h-2/3 flex flex-col justify-center items-center gap-8 p-4 md:p-8 ">
           <h1 className="md:text-4xl text-xl text-center ">
             YOU WON
@@ -58,7 +60,6 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   return (
     <div className=" w-full h-full flex flex-col justify-center items-center gap-4">
       <div className="border-2 border-black bg-green-500 rounded-md shadow-md w-4/5 h-2/3 flex flex-col justify-center items-center gap-8 p-4 md:p-8 ">
-        <h2 className="md:text-2xl b-2 text-center">Prize Reveal Window</h2>
         <h2 className="text-xl b-2 text-center md:text-4xl">
           You found {currentPrize}!</h2>
         <p>{`Prizes left ${selectedCircles.length - currentIndex - 1}`}</p>

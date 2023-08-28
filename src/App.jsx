@@ -147,7 +147,7 @@ function App() {
           <h3 className="text-xs md:text-md text-slate-900/70 text-center md:px-0 px-2">You can only keep 1 prize</h3>
         }
       </div>
-      <div className="flex justify-center items-center h-[80vh] md:h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
+      <div className="flex justify-center items-center h-[80vh] md:h-[60vh] w-[80vw] bg-slate-900/60 rounded-lg shadow-lg">
         {startPunchABunch ?
           <PunchABunchContainer punchCount={punchCount} handleUsePunch={handleUsePunch} handleNewGame={handleNewGame} />
           :
