@@ -9,6 +9,7 @@ import thermometer from './assets/GamePieces/thermometer.png';
 import wineSet from './assets/GamePieces/wineSet.png';
 import speakers from './assets/GamePieces/speakers.png';
 import weights from './assets/GamePieces/weights.png';
+import PunchABunchContainer from "./Components/PunchABunchContainer";
 
 const hiLoItems = [
   {
@@ -87,25 +88,25 @@ function App() {
     setPunchCount(punchCount + 1)
   }
 
-  
+
   const getRandomItem = () => {
     const unusedItems = hiLoItems.filter(item => !usedItems[item.name]);
-  
+
     if (unusedItems.length === 0) {
       return null;
     }
-  
+
     const randomIndex = Math.floor(Math.random() * unusedItems.length);
     const randomItem = unusedItems[randomIndex];
-  
+
     setUsedItems(prevUsedItems => ({
       ...prevUsedItems,
       [randomItem.name]: true
     }));
-  
+
     setItem(randomItem);
   };
-  
+
 
 
   const handleNextHiLoItem = () => {
@@ -129,7 +130,11 @@ function App() {
         <h1 className="md:text-4xl text-2xl">PUNCH-A-BUNCH</h1>
       </div>
       <div className="flex justify-center items-center h-[60vh] w-[80vw] border-2 border-red-400 bg-slate-900/60 rounded-lg shadow-lg">
-        <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} />
+        {startPunchABunch ?
+          <PunchABunchContainer />
+          :
+          <HiLoContainer punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} />
+        }
       </div>
     </main>
   )
