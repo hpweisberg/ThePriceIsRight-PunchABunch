@@ -51,8 +51,8 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
           </h1>
         </div>
         <div className=" flex justify-around">
-          <button className="endBtn"
-            onClick={() => handleRestart()}>Play Again?</button>
+          <div className="endBtn"
+            onClick={() => handleRestart()}>Play Again?</div>
         </div>
       </div>
     )
@@ -68,12 +68,12 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
       </div>
 
       <div className=" flex w-4/5 justify-around md:flex-row flex-col md:gap-0 gap-4 ">
-        <button onClick={handleKeepPrize} className="endBtn md:text-md">
+        <div onClick={handleKeepPrize} className="endBtn md:text-md">
           Keep Prize
-        </button>
-        <button onClick={handleContinue} className="endBtn md:text-md">
+        </div>
+        <div onClick={handleContinue} className="endBtn md:text-md">
           Throw Away Prize
-        </button>
+        </div>
       </div>
 
     </div>

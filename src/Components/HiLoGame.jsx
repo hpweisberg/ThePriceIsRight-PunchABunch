@@ -51,7 +51,7 @@ const HiLoGame = ({
   //TODO Handle the start game btn
   if (hiLoItemCount === 0) {
     return (
-      <button onClick={handleStartHiLoGame} className="w-auto p-4 bg-red-500 text-slate-200 hover:bg-red-600 hover:text-slate-100 transition-colors rounded-md shadow-md">Start Hi-Lo Game</button>
+      <div onClick={handleStartHiLoGame} className="w-auto p-4 bg-red-500 text-slate-200 hover:bg-red-600 hover:text-slate-100 transition-colors rounded-md shadow-md">Start Hi-Lo Game</div>
     );
   }
 
@@ -60,7 +60,7 @@ const HiLoGame = ({
     return (
       <div className="flex flex-col justify-center items-center gap-4 text-slate-200">
         <h2 className="text-center text-lg">Better luck next time!</h2>
-        <button onClick={handleNewGame} className="endBtn">Play Again?</button>
+        <div onClick={handleNewGame} className="endBtn">Play Again?</div>
       </div>
     )
   }
@@ -98,26 +98,26 @@ const HiLoGame = ({
         <div className="flex md:flex-col justify-center md:w-[200px] items-center ">
           {message === null && hiLoItemCount < 5 ? (
             <div className="flex md:flex-col">
-              <button
+              <div
                 className="mainBtn"
                 onClick={() => handleGuess('higher')}
               >
                 HIGHER
-              </button>
-              <button
+              </div>
+              <div
                 className="mainBtn"
                 onClick={() => handleGuess('lower')}
               >
                 LOWER
-              </button>
+              </div>
             </div>
           ) : (
-            <button
+            <div
               onClick={hiLoItemCount === 4 && message ? handleStartPunchABunch : handleContinue}
               className="mainBtn"
             >
               Continue
-            </button>
+            </div>
           )}
         </div>
       </section>

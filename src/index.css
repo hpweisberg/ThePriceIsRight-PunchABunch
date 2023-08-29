@@ -6,20 +6,17 @@
   @apply md:bg-hero-pattern bg-cover bg-no-repeat bg-center h-screen w-screen flex flex-col justify-center items-center text-black font-sans text-2xl font-bold overscroll-none bg-hero-pattern-mobile bg-yellow-300
 }
 
-button {
-  @apply hover:cursor-pointer
-}
 
 .topSubTitle {
   @apply text-slate-900/70 text-center md:px-0 px-2
 }
 
 .mainBtn {
-  @apply w-20 border-2 rounded-md shadow-md m-2 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors hover:text-slate-300
+  @apply w-20 border-2 rounded-md shadow-md m-2 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors hover:text-slate-300 text-center
 }
 
 .endBtn {
-  @apply border-2 hover:border-black rounded-md shadow-md p-1 px-2 hover:bg-slate-800 bg-blue-500/50 hover:text-slate-300 transition-colors text-xs
+  @apply border-2 hover:border-black rounded-md shadow-md p-1 px-2 hover:bg-slate-800 bg-blue-500/50 hover:text-slate-300 transition-colors text-xs text-center
 }
 
 .prizeContainer {
@@ -32,4 +29,27 @@ button {
 
 .prizeValueCircle {
   @apply bg-red-400 rounded-full md:p-1 p-[3px]
+}
+
+.hulk {
+  cursor: url('./assets/Punches/hulksm.png'), auto ;
+}
+
+.emoji {
+  cursor: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='42' height='42' style='font-size: 40px'><text y='40'>👊</text></svg>"), auto
+}
+
+.jackieChan {
+  cursor: url('./assets/Punches/jackieChansm.png'), auto ;
+}
+
+.onePunchManSm {
+  cursor: url('./assets/Punches/onePunchMansm.png'), auto ;
+}
+
+/* index.css */
+@media (max-width: 768px) {
+  .cursor-options-container {
+    display: none;
+  }
 }

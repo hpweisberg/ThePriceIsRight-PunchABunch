@@ -68,6 +68,7 @@ const hiLoItems = [
   }
 ]
 
+
 function App() {
   //TODO Track Punches, Start Punch-A-Bunch, HiLo Item Count, Item, usedItems
   const [punchCount, setPunchCount] = useState(0)
@@ -75,6 +76,7 @@ function App() {
   const [hiLoItemCount, setHiLoItemCount] = useState(0)
   const [item, setItem] = useState(null)
   const [usedItems, setUsedItems] = useState({});
+  
 
   //TODO Start the HiLo Game
   const handleStartHiLoGame = () => {
