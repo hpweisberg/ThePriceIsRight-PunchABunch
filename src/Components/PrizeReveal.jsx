@@ -12,7 +12,6 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
 
   //TODO End game when user is happy with their prize
   const handleKeepPrize = () => {
-    console.log(`You chose to keep the prize: ${currentPrize}`);
     setGameOver(true);
   };
 
@@ -39,7 +38,7 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   }
 
   //TODO Display end game card
-  if (gameOver === true) {
+  if (gameOver) {
     return (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
         <ConfettiEffect />

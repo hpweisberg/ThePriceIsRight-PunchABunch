@@ -16,18 +16,11 @@ const HiLoGame = ({
   //TODO Track state of RealPrice, message, and disable buttons.
   const [showRealPrice, setShowRealPrice] = useState(false);
   const [message, setMessage] = useState(null)
-  const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
-  //TODO Hide the real price and message on new item.
-  useEffect(() => {
-    setShowRealPrice(false);
-    setMessage(null);
-  }, [item]);
 
   //TODO Handle the user guess: show real price, disable buttons, & set message
   const handleGuess = (guess) => {
     setShowRealPrice(true);
-    setButtonsDisabled(true);
 
     if (
       (guess === 'higher' && item.realPrice > item.fakePrice) ||
@@ -40,28 +33,25 @@ const HiLoGame = ({
     }
   };
 
+  //TODO Hide the real price and message on new item.
+  useEffect(() => {
+    setShowRealPrice(false);
+    setMessage(null);
+  }, [item]);
+
   //TODO Handle the user clicking continue to the next item
   const handleContinue = () => {
     setShowRealPrice(false);
-    setButtonsDisabled(false);
 
     if (hiLoItemCount < 4) {
       handleNextHiLoItem();
     }
   };
 
-  //TODO Handle the user guessing wrong on all 4 items
-  const handleTryAgain = () => {
-    handleNewGame();
-    setButtonsDisabled(false);
-  }
-
   //TODO Handle the start game btn
   if (hiLoItemCount === 0) {
     return (
-      <section>
-        <button onClick={handleStartHiLoGame} className="w-auto p-4 bg-red-500 text-slate-200 hover:bg-red-600 hover:text-slate-100 transition-colors rounded-md shadow-md">Start Hi-Lo Game</button>
-      </section>
+      <button onClick={handleStartHiLoGame} className="w-auto p-4 bg-red-500 text-slate-200 hover:bg-red-600 hover:text-slate-100 transition-colors rounded-md shadow-md">Start Hi-Lo Game</button>
     );
   }
 
@@ -70,7 +60,7 @@ const HiLoGame = ({
     return (
       <div className="flex flex-col justify-center items-center gap-4 text-slate-200">
         <h2 className="text-center text-lg">Better luck next time!</h2>
-        <button onClick={handleTryAgain} className="endBtn">Play Again?</button>
+        <button onClick={handleNewGame} className="endBtn">Play Again?</button>
       </div>
     )
   }
@@ -111,14 +101,12 @@ const HiLoGame = ({
               <button
                 className="mainBtn"
                 onClick={() => handleGuess('higher')}
-                disabled={buttonsDisabled}
               >
                 HIGHER
               </button>
               <button
                 className="mainBtn"
                 onClick={() => handleGuess('lower')}
-                disabled={buttonsDisabled}
               >
                 LOWER
               </button>
