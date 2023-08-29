@@ -30,26 +30,3 @@
 .prizeValueCircle {
   @apply bg-red-400 rounded-full md:p-1 p-[3px]
 }
-
-.hulk {
-  cursor: url('./assets/Punches/hulksm.png'), auto ;
-}
-
-.emoji {
-  cursor: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='42' height='42' style='font-size: 40px'><text y='40'>👊</text></svg>"), auto
-}
-
-.jackieChan {
-  cursor: url('./assets/Punches/jackieChansm.png'), auto ;
-}
-
-.onePunchManSm {
-  cursor: url('./assets/Punches/onePunchMansm.png'), auto ;
-}
-
-/* index.css */
-@media (max-width: 768px) {
-  .cursor-options-container {
-    display: none;
-  }
-}

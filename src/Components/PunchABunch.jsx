@@ -19,12 +19,6 @@ const prizes = [
   { value: '25,000', count: 1 }
 ]
 
-// const cursorOptions = [
-//     {image: hulk, name: 'Hulk'},
-//     {image: jackieChan, name: 'Jackie Chan'},
-//     {image: OnePunchMan, name: 'One Punch Man'}
-//     {image: }
-
 const PunchABunch = ({ punchCount, handleUsePunch, handleNewGame }) => {
   //TODO Track state of selected circles and remaining prizes
   const [selectedCircles, setSelectedCircles] = useState([]);
@@ -72,12 +66,7 @@ const PunchABunch = ({ punchCount, handleUsePunch, handleNewGame }) => {
 
 
   return (
-        <section className="grid grid-cols-5 gap-1 md:grid-cols-10 md:grid-rows-5"
-          style={{
-            // use the hulk image as the cursor
-            // cursor: `url(${hulk}), auto`
-            // cursor: `url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='42' height='42' style='font-size: 40px'><text y='40'>👊</text></svg>"), auto`
-          }}>
+        <section className="grid grid-cols-5 gap-1 md:grid-cols-10 md:grid-rows-5">
           {Array.from({ length: 5 * 10 }).map((_, index) => (
             <div
               key={index}

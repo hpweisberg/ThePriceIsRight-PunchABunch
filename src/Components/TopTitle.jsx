@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
 import logo from '/Punch-A-Bunch-logo.png'
-
 import hulk from "../assets/Punches/hulksm.png";
 import jackieChan from '../assets/Punches/jackieChansm.png'
 import OnePunchMan from '../assets/Punches/OnePunchMansm.png'
@@ -16,14 +14,15 @@ import emojiBig from '../assets/Punches/emojiFist.png'
 
 
 const TopTitle = ({ startPunchABunch, punchCount, item }) => {
+  //TODO add cursor options
   const cursorOptions = [
+    { image: emoji, name: 'Emoji', display: emojiBig },
     { image: hulk, name: 'Hulk', display: hulkBig },
-    { image: jackieChan, name: 'Jackie Chan', display: jackieChanBig },
     { image: OnePunchMan, name: 'One Punch Man', display: OnePunchManBig },
-    { image: emoji, name: 'Emoji', display: emojiBig }
+    { image: jackieChan, name: 'Jackie Chan', display: jackieChanBig },
   ]
 
-  // on click, the cursor will change to the selected cursor
+  //TODO Let user select the cursor
   const handleSetCursor = (cursor) => {
     const selectedMouse = cursorOptions[cursor]
     document.body.style.cursor = `url(${selectedMouse.image}), auto`;
@@ -35,7 +34,6 @@ const TopTitle = ({ startPunchABunch, punchCount, item }) => {
     <div className="md:h-[200px] flex flex-col justify-center items-center md:mb-2">
       <img src={logo} alt="Punch-A-Bunch Logo" className=" h-[100px] md:h-[200px] mt-2" />
       <div className='cursor-options-container'>
-
         {
           startPunchABunch === false && (item === null) &&
           <div className='flex items-center'>
