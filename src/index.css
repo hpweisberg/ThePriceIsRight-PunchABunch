@@ -10,3 +10,26 @@ button {
   @apply hover:cursor-pointer
 }
 
+.topSubTitle {
+  @apply text-slate-900/70 text-center md:px-0 px-2
+}
+
+.mainBtn {
+  @apply w-20 border-2 rounded-md shadow-md m-2 bg-blue-500/50 hover:bg-slate-800 hover:transition-colors hover:text-slate-300
+}
+
+.endBtn {
+  @apply border-2 hover:border-black rounded-md shadow-md p-1 px-2 hover:bg-slate-800 bg-blue-500/50 hover:text-slate-300 transition-colors text-xs
+}
+
+.prizeContainer {
+  @apply border-2 border-black bg-green-500 rounded-md shadow-md w-4/5 h-2/3 flex flex-col justify-center items-center gap-8 p-4 md:p-8
+}
+
+.punchBtn {
+  @apply w-8 h-8 md:w-12 md:h-12 md:mx-1 m-[2px] flex items-center justify-center rounded-full text-center text-xl md:text-3xl font-bold text-yellow-400
+}
+
+.prizeValueCircle {
+  @apply bg-red-400 rounded-full md:p-1 p-[3px]
+}

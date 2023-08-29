@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react"
-// import HiLoContainer from "./Components/HiLoContainer"
+import { useState } from "react";
+
 import HiLoGame from "./Components/HiLoGame";
 import PrizeValues from "./Components/PrizeValues";
 import TopTitle from "./Components/TopTitle";
-
-import hydrationSystem from './assets/GamePieces/hydrationSystem.png';
-import cakeStand from './assets/GamePieces/cakeStand.png';
-import slicerAndWedger from './assets/GamePieces/slicerAndWedger.png';
-import photoScanner from './assets/GamePieces/photoScanner.png';
-import thermometer from './assets/GamePieces/thermometer.png';
-import wineSet from './assets/GamePieces/wineSet.png';
-import speakers from './assets/GamePieces/speakers.png';
-import weights from './assets/GamePieces/weights.png';
-import PunchABunchContainer from "./Components/PunchABunchContainer";
 import HiLoRules from "./Components/HiLoRules";
+import PunchABunch from "./Components/PunchABunch";
+
+import cakeStand from './assets/GamePieces/cakeStand.png';
+import hydrationSystem from './assets/GamePieces/hydrationSystem.png';
+import photoScanner from './assets/GamePieces/photoScanner.png';
+import slicerAndWedger from './assets/GamePieces/slicerAndWedger.png';
+import speakers from './assets/GamePieces/speakers.png';
+import thermometer from './assets/GamePieces/thermometer.png';
+import weights from './assets/GamePieces/weights.png';
+import wineSet from './assets/GamePieces/wineSet.png';
 
 
 const hiLoItems = [
@@ -69,6 +69,7 @@ const hiLoItems = [
 ]
 
 function App() {
+  //TODO Track Punches, Start Punch-A-Bunch, HiLo Item Count, Item, usedItems
   const [punchCount, setPunchCount] = useState(0)
   const [startPunchABunch, setStartPunchABunch] = useState(false)
   const [hiLoItemCount, setHiLoItemCount] = useState(0)
@@ -142,13 +143,31 @@ function App() {
 
 
   return (
-    <main className="flex flex-col items-center gap-4 h-screen">
-      <TopTitle startPunchABunch={startPunchABunch} punchCount={punchCount} handleStartHiLoGame={handleStartHiLoGame} item={item} />
+    <main className="flex flex-col items-center gap-1 md:gap-4 h-screen">
+      <TopTitle
+        startPunchABunch={startPunchABunch}
+        punchCount={punchCount}
+        handleStartHiLoGame={handleStartHiLoGame}
+        item={item}
+      />
       <div className="flex justify-center items-center h-[600px] md:h-[500px] w-[90%] md:w-[1000px] bg-slate-900/60 rounded-lg shadow-lg">
         {startPunchABunch ?
-          <PunchABunchContainer punchCount={punchCount} handleUsePunch={handleUsePunch} handleNewGame={handleNewGame} />
+          <PunchABunch
+            punchCount={punchCount}
+            handleUsePunch={handleUsePunch}
+            handleNewGame={handleNewGame}
+          />
           :
-          <HiLoGame punchCount={punchCount} handleCorrectHiLoGuess={handleCorrectHiLoGuess} hiLoItemCount={hiLoItemCount} handleNextHiLoItem={handleNextHiLoItem} handleStartPunchABunch={handleStartPunchABunch} getRandomItem={getRandomItem} item={item} handleStartHiLoGame={handleStartHiLoGame} handleNewGame={handleNewGame} />
+          <HiLoGame
+            punchCount={punchCount}
+            handleCorrectHiLoGuess={handleCorrectHiLoGuess}
+            hiLoItemCount={hiLoItemCount}
+            handleNextHiLoItem={handleNextHiLoItem}
+            handleStartPunchABunch={handleStartPunchABunch}
+            getRandomItem={getRandomItem} item={item}
+            handleStartHiLoGame={handleStartHiLoGame}
+            handleNewGame={handleNewGame}
+          />
         }
       </div>
       {!startPunchABunch && item != null &&

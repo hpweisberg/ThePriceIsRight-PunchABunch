@@ -15,7 +15,7 @@ const prizes = [
   { value: '25,000', count: 1 }
 ]
 
-const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => {
+const PunchABunch = ({ punchCount, handleUsePunch, handleNewGame }) => {
   //TODO Track state of selected circles and remaining prizes
   const [selectedCircles, setSelectedCircles] = useState([]);
   const [remainingPrizes, setRemainingPrizes] = useState([]);
@@ -61,15 +61,14 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
 
 
   return (
-    <section className="w-full h-full flex justify-center items-center p-2">
-        <div className="grid grid-cols-5 gap-1 md:grid-cols-10 md:grid-rows-5"
+        <section className="grid grid-cols-5 gap-1 md:grid-cols-10 md:grid-rows-5"
           style={{
             cursor: `url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='42' height='42' style='font-size: 40px'><text y='40'>👊</text></svg>"), auto`
           }}>
           {Array.from({ length: 5 * 10 }).map((_, index) => (
             <div
               key={index}
-              className={`w-8 h-8 md:w-12 md:h-12 md:mx-1 m-[2px] flex items-center justify-center rounded-full text-center text-xl md:text-3xl font-bold text-yellow-400 ${selectedCircles.some((circle) => circle.index === index)
+              className={`punchBtn ${selectedCircles.some((circle) => circle.index === index)
                 ? 'bg-gradient-to-tr from-black to-gray-700'
                 : 'bg-yellow-200/30'
                 }`}
@@ -78,10 +77,8 @@ const PunchABunchContainer = ({ punchCount, handleUsePunch, handleNewGame }) => 
               {selectedCircles.some((circle) => circle.index === index) ? '' : '$'}
             </div>
           ))}
-        </div>
-    </section>
-
+        </section>
   );
 }
 
-export default PunchABunchContainer;
+export default PunchABunch;

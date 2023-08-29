@@ -9,15 +9,15 @@ const TopTitle = ({ startPunchABunch, punchCount, item }) => {
       {
         startPunchABunch === false && (item != null) &&
         <div className=''>
-          <p className='text-sm md:text-lg text-slate-900/70 text-center md:px-0 px-2'>Punch Count: {punchCount}</p>
+          <p className='md:text-lg topSubTitle'>Punch Count: {punchCount}</p>
         </div>
       }
       {punchCount > 0 && startPunchABunch &&
-        <h3 className="text-xs md:text-md text-slate-900/70 text-center md:px-0 px-2">Punch Count: {punchCount}</h3>
+        <h3 className="md:text-lg topSubTitle">Punch Count: {punchCount}</h3>
       }
       {
         punchCount === 0 && startPunchABunch &&
-        <h3 className="text-xs md:text-md text-slate-900/70 text-center md:px-0 px-2">You can only keep 1 prize</h3>
+        <h3 className="md:text-md topSubTitle">You can only keep 1 prize</h3>
       }
     </div>
   );
