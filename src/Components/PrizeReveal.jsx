@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import ConfettiEffect from "./ConfettiEffect";
+import EndGameCard from "./EndGameCard";
 
 const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   //TODO Track state of currentIndex and gameOver
@@ -40,21 +40,10 @@ const PrizeReveal = ({ selectedCircles, handleNewGame }) => {
   //TODO Display end game card
   if (gameOver) {
     return (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <ConfettiEffect />
-        <div className="prizeContainer">
-          <h1 className="md:text-4xl text-xl text-center ">
-            YOU WON
-          </h1>
-          <h1 className="md:text-6xl text-2xl text-center ">
-            ${currentPrize}!
-          </h1>
-        </div>
-        <div className=" flex justify-around">
-          <div className="endBtn"
-            onClick={() => handleRestart()}>Play Again?</div>
-        </div>
-      </div>
+      <EndGameCard
+      handleRestart={handleRestart}
+      currentPrize={currentPrize}
+      />
     )
   }
 

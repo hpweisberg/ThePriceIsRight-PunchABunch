@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+
 import logo from '/Punch-A-Bunch-logo.png'
 import hulk from "../assets/Punches/hulksm.png";
 import jackieChan from '../assets/Punches/jackieChansm.png'
@@ -28,28 +30,42 @@ const TopTitle = ({ startPunchABunch, punchCount, item }) => {
     document.body.style.cursor = `url(${selectedMouse.image}), auto`;
   }
 
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 400);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth > 400);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className="md:h-[200px] flex flex-col justify-center items-center md:mb-2">
-      <img src={logo} alt="Punch-A-Bunch Logo" className=" h-[100px] md:h-[200px] mt-2" />
-      <div className='cursor-options-container'>
-        {
-          startPunchABunch === false && (item === null) &&
-          <div className='flex items-center'>
-            <p className='pr-2'>Choose your cursor:</p>
-            {cursorOptions.map((option, index) => (
-              <img
-                key={index}
-                onClick={() => handleSetCursor(index)}
-                src={option.display}
-                alt={option.name}
-                className="cursor-option px-1 w-10"
-              />
-            ))}
-          </div>
-        }
-      </div>
+      <img src={logo} alt="Punch-A-Bunch Logo" className="h-[100px] md:h-[200px] mt-2" />
+      {isWideScreen && (
+        <div className='cursor-options-container'>
+          {
+            startPunchABunch === false && (item === null) &&
+            <div className='flex items-center'>
+              <p className='pr-2'>Choose your cursor:</p>
+              {cursorOptions.map((option, index) => (
+                <img
+                  key={index}
+                  onClick={() => handleSetCursor(index)}
+                  src={option.display}
+                  alt={option.name}
+                  className="cursor-option px-1 w-10"
+                />
+              ))}
+            </div>
+          }
+        </div>
+      )}
 
       {
         startPunchABunch === false && (item != null) &&
