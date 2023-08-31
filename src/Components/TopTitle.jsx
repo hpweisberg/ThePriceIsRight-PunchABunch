@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 
 import logo from '/Punch-A-Bunch-logo.png'
-import hulk from "../assets/Punches/hulksm.png";
-import jackieChan from '../assets/Punches/jackieChansm.png'
-import OnePunchMan from '../assets/Punches/OnePunchMansm.png'
-import hulkBig from "../assets/Punches/hulk.png";
-import jackieChanBig from '../assets/Punches/jackieChan.png'
-import OnePunchManBig from '../assets/Punches/OnePunchMan.png'
-import emoji from '../assets/Punches/emojiFistsm.png'
-import emojiBig from '../assets/Punches/emojiFist.png'
+import hulk from "/Punches/hulksm.png";
+import jackieChan from '/Punches/jackieChansm.png'
+import OnePunchMan from '/Punches/onePunchMansm.png'
+import hulkBig from "/Punches/hulk.png";
+import jackieChanBig from '/Punches/jackieChan.png'
+import OnePunchManBig from '/Punches/onePunchMan.png'
+import emoji from '/Punches/emojiFistsm.png'
+import emojiBig from '/Punches/emojiFist.png'
 
 
 

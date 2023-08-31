@@ -6,14 +6,14 @@ import TopTitle from "./Components/TopTitle";
 import HiLoRules from "./Components/HiLoRules";
 import PunchABunch from "./Components/PunchABunch";
 
-import cakeStand from './assets/GamePieces/cakeStand.png';
-import hydrationSystem from './assets/GamePieces/hydrationSystem.png';
-import photoScanner from './assets/GamePieces/photoScanner.png';
-import slicerAndWedger from './assets/GamePieces/slicerAndWedger.png';
-import speakers from './assets/GamePieces/speakers.png';
-import thermometer from './assets/GamePieces/thermometer.png';
-import weights from './assets/GamePieces/weights.png';
-import wineSet from './assets/GamePieces/wineSet.png';
+import cakeStand from '/GamePieces/cakeStand.png';
+import hydrationSystem from '/GamePieces/hydrationSystem.png';
+import photoScanner from '/GamePieces/photoScanner.png';
+import slicerAndWedger from '/GamePieces/slicerAndWedger.png';
+import speakers from '/GamePieces/speakers.png';
+import thermometer from '/GamePieces/thermometer.png';
+import weights from '/GamePieces/weights.png';
+import wineSet from '/GamePieces/wineSet.png';
 
 
 const hiLoItems = [
