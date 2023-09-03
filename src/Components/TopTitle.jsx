@@ -27,8 +27,13 @@ const TopTitle = ({ startPunchABunch, punchCount, item }) => {
   //TODO Let user select the cursor
   const handleSetCursor = (cursor) => {
     const selectedMouse = cursorOptions[cursor]
+    // console.log(selectedMouse)
     document.body.style.cursor = `url(${selectedMouse.image}), auto`;
   }
+
+
+  // console.log(document.body.style.cursor)
+  
 
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 400);
 
@@ -43,6 +48,8 @@ const TopTitle = ({ startPunchABunch, punchCount, item }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  // console.log(isWideScreen)
 
   return (
     <div className="md:h-[200px] flex flex-col justify-center items-center md:mb-2">
